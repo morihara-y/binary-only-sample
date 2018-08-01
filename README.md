@@ -1,6 +1,6 @@
-# Binary-Only Packageの作成から使用
+# Golang Binary-Only Package
 
-Go1.7 から Binary-Only Package が導入されています。Binary-Only Package はパッケージのコンパイルに使用されるソースコードを含まずにバイナリ形式でパッケージを配布することを可能にするものです。このリポジトリは パッケージをバイナリにしてzipにして配布、そして使うという一連の流れを試した結果です。
+Go1.7 から Binary-Only Package が導入されています。Binary-Only Package はパッケージのコンパイルに使用されるソースコードを含まずにバイナリ形式でパッケージを配布することを可能にするものです。このリポジトリは パッケージをバイナリにしてzipにして配布、そして使うという一連の流れを試した結果です。日本語の解説がほぼなかったのでまとめておきます。
 
 ## 作り方
 まずは Root に hello.go を作る。このコードは実際には配布されません。build時に使うのみです。
@@ -46,7 +46,7 @@ $ go build -o pkg/darwin_amd64/github.com/po3rin/hello.a -x
 $ zip -r hello.zip src/* pkg/*
 ```
 
-以上で Bainary-Only なパッケージができた。最終的には下記のような構成になる。
+以上で Binary-Only なパッケージができた。最終的には下記のような構成になる。
 
 ```bash
 .
@@ -67,7 +67,7 @@ $ zip -r hello.zip src/* pkg/*
 
 これで hello.zip だけ配ればパッケージとして機能してくれる。
 
-## Bainar-Only Package を使う
+## Binar-Only Package を使う
 
 このバイナリパッケージを使う際には、ただGOPATHで展開するだけでOK
 
