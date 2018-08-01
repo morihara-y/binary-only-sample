@@ -67,7 +67,7 @@ $ zip -r hello.zip src/* pkg/*
 
 これで hello.zip だけ配ればパッケージとして機能してくれる。
 
-## Binar-Only Package を使う
+## Binary-Only Package を使う
 
 このバイナリパッケージを使う際には、ただGOPATHで展開するだけでOK
 
