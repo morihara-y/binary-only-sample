@@ -1,4 +1,4 @@
-# Binary-Only Packageを作成する
+# Binary-Only Packageの作成から使用
 
 Go1.7 から Binary-Only Package が導入されています。Binary-Only Package はパッケージのコンパイルに使用されるソースコードを含まずにバイナリ形式でパッケージを配布することを可能にするものです。このリポジトリは パッケージをバイナリにしてzipにして配布、そして使うという一連の流れを試した結果です。
 
@@ -24,7 +24,7 @@ func Hello(name string) string {
 
 https://tip.golang.org/pkg/go/build/#hdr-Binary_Only_Packages
 
-つまり`//go:binary-only-package`というコメントをソースコードに残せということらしい。この例は今回 `src/github.com/po3rin/hello/.` に配置した。GitHubのアカウント名は適宜書き換えてください(po3rinの部分)
+つまり`//go:binary-only-package`というコメントをソースコードに残せということらしい。今回の例は `src/github.com/po3rin/hello/hello.go` を下記のように作った。GitHubのアカウント名は適宜書き換えてください(po3rinの部分)
 
 ```go
 // package hello is sample of binary-only package
@@ -36,13 +36,13 @@ package hello
 
 そしてバイナリパッケージに build し、`pkg/darwin_amd64/github.com/po3rin/` に配置する。
 
-```
+```bash
 $ go build -o pkg/darwin_amd64/github.com/po3rin/hello.a -x
 ```
 
 そして, `src` と `pkg` をzipで固めます。
 
-```
+```bash
 $ zip -r hello.zip src/* pkg/*
 ```
 
@@ -91,6 +91,8 @@ func main() {
 	fmt.Println(greet)
 }
 ```
+
+そして動作確認
 
 ```go
 go run main.go
