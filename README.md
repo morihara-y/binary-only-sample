@@ -1,9 +1,9 @@
 # Sample Binary-Only Packages
 
-Go1.7 から Binary-Only パッケージが導入された. このリポジトリは パッケージをバイナリにしてzipにして配布という一連の流れを試した結果です。
+Go1.7 から Binary-Only パッケージが導入された。このリポジトリは パッケージをバイナリにしてzipにして配布という一連の流れを試した結果です。
 
 ## How to create?
-まずは Root に hello.go を作る。このコードは配布されません。
+まずは Root に hello.go を作る。このコードは配布されない。
 
 Binary-Only パッケージを作る際には二つのファイルを作る必要があります。特別なコメントを付与したソースコードと、他のバイナリーパッケージです。
 
@@ -13,9 +13,17 @@ Binary-Only パッケージを作る際には二つのファイルを作る必�
 
 https://tip.golang.org/pkg/go/build/#hdr-Binary_Only_Packages
 
-つまり`//go:binary-only-package`というコメントをソースコードに残せということらしい。この例は今回 `src/github.com/tcnksm/hello/.` に配置した
+つまり`//go:binary-only-package`というコメントをソースコードに残せということらしい。この例は今回 `src/github.com/po3rin/hello/.` に配置した
 
-まずはバイナリパッケージに build し、`pkg/darwin_amd64/github.com/tcnksm/ directory.` に配置する。
+```go
+// package hello is sample of binary-only package
+
+//go:binary-only-package
+
+package hello
+```
+
+そしてバイナリパッケージに build し、`pkg/darwin_amd64/github.com/tcnksm/ directory.` に配置する。
 
 ```
 $ go build -o pkg/darwin_amd64/github.com/po3rin/hello.a -x
@@ -27,8 +35,7 @@ $ go build -o pkg/darwin_amd64/github.com/po3rin/hello.a -x
 $ zip -r hello.zip src/* pkg/*
 ```
 
-以上で Bainary-Only なパッケージができた。
-最終的にはこうなる
+以上で Bainary-Only なパッケージができた。最終的にはこうなる
 
 ```bash
 .
